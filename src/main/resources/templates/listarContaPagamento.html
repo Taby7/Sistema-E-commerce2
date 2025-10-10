@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Contas de Pagamento</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+    <script src="/js/menu.js"></script>
+</head>
+<body>
+    <div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+    <h1>LISTAR CONTAS DE PAGAMENTO</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Titular</th>
+                <th>Número do Cartão</th>
+                <th>Bandeira</th>
+                <th>Vencimento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="contapagamento : ${contapagamentos}">
+                <td th:text="${contapagamento.titular}"></td>
+                <td th:text="${contapagamento.numeroCartao}"></td>
+                <td th:text="${contapagamento.bandeira}"></td>
+                <td th:text="${contapagamento.dataValidadeCartao != null ? #temporals.format(contapagamento.dataValidadeCartao, 'dd/MM/yyyy') : ''}"></td>
+                <td>
+                    <a th:href="@{'/contaPagamento/edit/' + ${contapagamento.id}}">Editar</a> |
+                    <a th:href="@{'/contaPagamento/delete/' + ${contapagamento.id}}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

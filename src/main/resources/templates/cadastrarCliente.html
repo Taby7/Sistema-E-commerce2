@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>Cadastro Cliente</title>
+		<link rel="stylesheet" th:href="@{/css/menu.css}">
+		<script src="/js/menu.js"></script>
+
+	</head>
+	<body>
+		<div th:insert="fragments/barraNavegacao :: navbar"></div>
+		
+		<br>
+		
+		<div class="form-header">
+			<h1>Cadastro de Cliente</h1>
+		</div>
+		<br>
+		
+		<form th:action="@{/cliente/save}" th:object="${cliente}" method="post">
+            <br>
+
+          <div th:insert= "fragments/formCliente :: formCliente"></div>
+		  			
+            <div class="button-container">
+                <button type="submit">Salvar</button>
+
+                <button type="button" onclick="window.location.href='/cliente/form'">Cancelar</button>
+            </div>
+        </form>
+
+
+	</body>
+</html>

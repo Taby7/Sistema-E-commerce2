@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Pedidos</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+    <script src="/js/menu.js"></script>
+</head>
+<body>
+    <div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+    <h1>LISTAR PEDIDOS</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID do Pedido</th>
+                <th>Cliente</th>
+                <th>Data do Pedido</th>
+                <th>Status</th>
+                <th>Valor Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.id}"></td>
+                <td th:text="${pedido.cliente.nome}"></td>
+                <td th:text="${#temporals.format(pedido.dataPedido, 'dd/MM/yyyy')}"></td>
+                <td th:text="${pedido.status}"></td>
+                <td th:text="${#numbers.formatCurrency(pedido.valorTotal)}"></td>
+                <td>
+                    <a th:href="@{'/pedido/edit/' + ${pedido.id}}">Editar</a> |
+                    <a th:href="@{'/pedido/delete/' + ${pedido.id}}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

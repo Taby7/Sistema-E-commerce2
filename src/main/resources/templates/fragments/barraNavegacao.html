@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Fragments</title>
+   <link rel="stylesheet" th:href="@{/css/menu.css}">
+   
+</head>
+<body>
+   <div th:fragment="navbar" class="menu">
+		<div class="sidenav">
+				<a href="/">Início</a>
+				
+			<button class="dropdown-btn">
+                    Clientes &#x25BC;
+				</button>
+				<div class="dropdown-container">
+					<a th:href="@{/cliente/form}">Cadastrar</a> 
+					
+					<a	th:href="@{/cliente/list}">Listar</a>
+				</div>
+
+			<button class="dropdown-btn">
+                    Conta Pagamento &#x25BC;
+				</button>
+				<div class="dropdown-container">
+					<a th:href="@{/contaPagamento/form}">Cadastrar</a> 
+					
+					<a	th:href="@{/contaPagamento/list}">Listar</a>
+				</div>
+				
+				
+			<button class="dropdown-btn">
+					Pedidos &#x25BC;
+				</button>
+				<div class="dropdown-container">
+					<a th:href="@{/pedido/form}">Cadastrar</a>
+
+					<a th:href="@{/pedido/list}">Listar</a>
+				</div>
+		 </div>
+
+		 <script src="/js/menu.js"></script>
+		 
+		 <div th:insert="fragments/mensagem :: message"></div>
+
+   </div>
+</body>
+</html>

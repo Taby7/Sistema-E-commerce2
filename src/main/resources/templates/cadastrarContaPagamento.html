@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Conta Pagamento</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+		<script src="/js/menu.js"></script>
+
+</head>
+<body>
+
+    <div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+    <br>
+
+    <div class="form-header">
+        <h1>Cadastro de Conta Pagamento</h1>
+    </div>
+
+    <br>
+    <form th:action="@{/contaPagamento/save}" th:object="${contaPagamento}" method="post">
+        <br>
+
+        <div th:insert="fragments/formContaPagamento :: formContaPagamento"></div>
+
+        <div class="button-container">
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="window.location.href='/contaPagamento/form'">Cancelar</button>
+        </div>
+    </form>
+</body>
+</html>

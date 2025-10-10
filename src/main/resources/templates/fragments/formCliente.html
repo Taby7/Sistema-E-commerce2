@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmento Formulário Cliente</title>
+</head>
+<body>
+
+    <div th:fragment="formCliente" class="form">
+        
+            <label for="idNome">Nome Completo:</label>
+            <input type="text" id="idNome" th:field="*{nome}" placeholder="Informe o nome completo do cliente" required/>
+            <br>
+
+            <label for="idTelefone">Telefone:</label>
+            <input type="text" id="idTelefone" th:field="*{telefone}" placeholder="Informe o telefone (Ex: 99 99999-9999)" required/>
+            <br>
+
+            <label for="idEmail">Email:</label>
+            <input type="email" id="idEmail" th:field="*{email}" placeholder="Informe o email" required/>
+            <br>
+
+            <label for="idDataCadastro">Data do Cadastro:</label>
+            <input type="date" id="idDataCadastro" th:field="*{dataCadastro}" required/>
+            <br>
+            
+            <label for="idEndereco">Endereço:</label>
+            <input type="text" id="idEndereco" th:field="*{endereco}" required/>
+            <br>
+	        
+            
+    </div>
+    
+</body>
+</html>
