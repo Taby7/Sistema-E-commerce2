@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Cadastrar Usuário</title>
+
+	<link rel="stylesheet" th:href="@{/css/menu.css}">
+		<script src="/js/menu.js"></script>
+
+	</head>
+	<body>
+		<div th:insert="fragments/barraNavegacao :: navbar"></div>
+		
+		<br>
+		
+		<div class="form-header">
+    <h2>Cadastrar Usuário</h2>
+
+   <form th:action="@{/usuario/save}" th:object="${usuario}" method="post">
+
+        <label>Nome*:</label>
+        <input type="text" th:field="*{nome}" required/>
+        <br/><br/>
+
+        <label>Username*:</label>
+        <input type="text" th:field="*{username}" required/>
+        <br/><br/>
+
+        <label>Login*:</label>
+        <input type="text" th:field="*{login}" required/>
+        <br/><br/>
+        
+        <label>E-mail*:</label>
+        <input type="email" th:field="*{email}"/>
+        <br/><br/>
+
+        <label>Senha*:</label>
+        <input type="password" th:field="*{senha}" required/>
+        <br><br/>
+
+        <button type="submit">Salvar</button>
+        <a th:href="@{/usuario/list}"><button type="button">Cancelar</button></a>
+
+    </form>
+    
+    </div>
+        </body>
+        </html>
+        

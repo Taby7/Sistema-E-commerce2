@@ -19,6 +19,7 @@
                 <th>Número do Cartão</th>
                 <th>Bandeira</th>
                 <th>Vencimento</th>
+                <th>Limite</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -28,6 +29,7 @@
                 <td th:text="${contapagamento.numeroCartao}"></td>
                 <td th:text="${contapagamento.bandeira}"></td>
                 <td th:text="${contapagamento.dataValidadeCartao != null ? #temporals.format(contapagamento.dataValidadeCartao, 'dd/MM/yyyy') : ''}"></td>
+                <td th:text="${contapagamento.limiteCartao}"></td>
                 <td>
                     <a th:href="@{'/contaPagamento/edit/' + ${contapagamento.id}}">Editar</a> |
                     <a th:href="@{'/contaPagamento/delete/' + ${contapagamento.id}}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>

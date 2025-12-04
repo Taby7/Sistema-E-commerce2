@@ -9,6 +9,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +24,18 @@ public class ContaPagamento implements Serializable {
 	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	@OneToOne
+	@JoinColumn(name = "cliente_id", nullable = false, unique = true)
+	@NotNull(message = "O cliente é obrigatório")
+	private Cliente cliente;
 	
 	@NotBlank(message= "limite do cartão é obrigatório")
 	@Column(nullable = false)

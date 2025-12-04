@@ -7,7 +7,21 @@
 </head>
 <body>
 
-    <div th:fragment="formContaPagamento" class="form">
+	<div th:fragment="formContaPagamento" class="form">
+    
+    <input type="hidden" th:field="*{id}" /> 
+
+    <label for="idCliente">Cliente:</label>
+    <select id="idCliente" th:field="*{cliente}" required>
+    <option value="">Selecione um Cliente</option>
+    
+    <option th:each="c : ${clientes}" 
+            th:value="${c.id}" 
+            th:text="${c.nome}">
+    </option>
+		</select>
+    <br>
+
     
     <label for="idTitular">Nome do Titular:</label>
     <input type="text" id="idTitular" th:field="*{titular}" placeholder="Nome impresso no cartão" required/>

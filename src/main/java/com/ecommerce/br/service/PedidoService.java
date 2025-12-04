@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ecommerce.br.entity.Cliente;
 import com.ecommerce.br.entity.Pedido;
 import com.ecommerce.br.repository.PedidoRepository;
 
@@ -41,5 +42,12 @@ public class PedidoService {
 	public boolean existsById(Long id) {
 		return pedidoRepository.existsById(id);
 	}
+
+	public boolean existsByCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
 
 }

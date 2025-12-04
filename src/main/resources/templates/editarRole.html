@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Role</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+<body>
+    
+        <div th:insert="fragments/barraNavegacao :: navbar"></div>
+		
+		<br>
+		
+		<div class="form-header">
+			<h1>Editar Role</h1>
+		</div>
+		<br>
+		
+		<form th:action="@{/role/update}" th:object="${role}" method="post">
+            
+            <input type="hidden" th:field="*{id}" />
+            <br>
+
+            <div th:insert="fragments/formRole :: formRole"></div> 
+
+            <div class="button-container">
+                <button type="submit">Salvar Alterações</button>
+
+                <button type="button" onclick="window.location.href='/role/list'">Cancelar</button>
+            </div>
+        </form>
+
+</body>
+</html>

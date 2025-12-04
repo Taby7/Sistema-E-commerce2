@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+<body>
+    
+        <div th:insert="fragments/barraNavegacao :: navbar"></div>
+		
+		<br>
+		
+		<div class="form-header">
+			<h1>Editar Usuário</h1>
+		</div>
+		<br>
+		
+		<form th:action="@{/usuario/update}" th:object="${usuario}" method="post">
+            
+            <input type="hidden" th:field="*{id}" />
+            <br>
+
+            <div th:insert="fragments/formUsuario :: formUsuario"></div> 
+
+            <div class="button-container">
+                <button type="submit">Salvar Alterações</button>
+
+                <button type="button" onclick="window.location.href='/usuario/list'">Cancelar</button>
+            </div>
+        </form>
+
+</body>
+</html>

@@ -11,12 +11,17 @@
 <body>
 
     <div th:insert="fragments/barraNavegacao :: navbar"></div>
-
+	
     <br>
 
     <div class="form-header">
         <h1>Cadastro de Conta Pagamento</h1>
     </div>
+    
+     <div th:if="${mesagemErro}" class="alert alert-danger">
+        <p th:text="${mesagemErro}"></p>
+    </div>
+    
 
     <br>
     <form th:action="@{/contaPagamento/save}" th:object="${contaPagamento}" method="post">

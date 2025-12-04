@@ -13,12 +13,13 @@
 
     <label for="idCliente">Cliente:</label>
     <select id="idCliente" th:field="*{cliente}" required>
-        <option value="">Selecione um Cliente</option>
-        <option th:each="c : ${clientes}" 
-                th:value="${c.id}" 
-                th:text="${c.nome}">
-        </option>
-    </select>
+    <option value="">Selecione um Cliente</option>
+    
+    <option th:each="c : ${clientes}" 
+            th:value="${c.id}" 
+            th:text="${c.nome}">
+    </option>
+		</select>
     <br>
 
     <label for="idDataPedido">Data do Pedido:</label>

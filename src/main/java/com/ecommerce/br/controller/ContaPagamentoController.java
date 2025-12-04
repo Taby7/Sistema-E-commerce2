@@ -1,5 +1,7 @@
 package com.ecommerce.br.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.ecommerce.br.service.ClienteService;
+import com.ecommerce.br.entity.Cliente;
 import com.ecommerce.br.entity.ContaPagamento;
 import com.ecommerce.br.service.ContaPagamentoService;
 
@@ -18,10 +21,13 @@ public class ContaPagamentoController {
 	
 	@Autowired
 	protected ContaPagamentoService contaPagamentoService;
+	@Autowired 
+	private ClienteService clienteService;
 	
 	@GetMapping("/form")
 	public String home(Model model ) {
 		model.addAttribute("contaPagamento", new ContaPagamento ());
+		model.addAttribute("clientes", clienteService.findAll());
 		return "cadastrarContaPagamento";
 	}
 	
@@ -50,7 +56,7 @@ public class ContaPagamentoController {
 		return listContaPagamentos(model);
 	}
 	
-	@PostMapping("/edit")
+	@PostMapping("/update")
 	public String editContaPagamentoPost(@ModelAttribute ContaPagamento contaPagamento, Model model) {
 		if((!contaPagamentoService.findById(contaPagamento.getId()).getNumeroCartao().equals(contaPagamento.getNumeroCartao())) && contaPagamentoService.existsByNumeroCartao(contaPagamento.getNumeroCartao())) {
 			model.addAttribute("mensagemErro", "Conta de pagamento com número de cartão " + contaPagamento.getNumeroCartao() + " já existe.");
@@ -67,11 +73,13 @@ public class ContaPagamentoController {
 	@GetMapping("/edit/{id}")
 	public String showEditForm(@PathVariable Long id, Model model) {
 		ContaPagamento contaPagamento = contaPagamentoService.findById(id);
+		List<Cliente> clientes = clienteService.findAll();
 		if (contaPagamento == null) {
 			model.addAttribute("mensagemErro", "Conta de pagamento não encontrada.");
 			return listContaPagamentos(model);
 		}
 		model.addAttribute("contaPagamento", contaPagamento);
+		model.addAttribute("clientes", clientes);
 		return "editarContaPagamento";
 	}
 }

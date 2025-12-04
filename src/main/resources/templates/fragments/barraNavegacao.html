@@ -8,7 +8,6 @@
 <body>
    <div th:fragment="navbar" class="menu">
 		<div class="sidenav">
-				<a href="/">Início</a>
 				
 			<button class="dropdown-btn">
                     Clientes &#x25BC;
@@ -37,6 +36,30 @@
 
 					<a th:href="@{/pedido/list}">Listar</a>
 				</div>
+				
+				<button class="dropdown-btn">
+					Usuario &#x25BC;
+				</button>
+				<div class="dropdown-container">
+					<a th:href="@{/usuario/form}">Cadastrar</a>
+
+					<a th:href="@{/usuario/list}">Listar</a>
+				</div>
+				
+				<button class="dropdown-btn">
+					Role &#x25BC;
+				</button>
+				<div class="dropdown-container">
+					<a th:href="@{/role/form}">Cadastrar</a>
+
+					<a th:href="@{/role/list}">Listar</a>
+				</div>
+				
+				
+				<form th:action="@{/logout}" method="post">
+				 <button type="submit">Sair</button>
+</form>
+				
 		 </div>
 
 		 <script src="/js/menu.js"></script>

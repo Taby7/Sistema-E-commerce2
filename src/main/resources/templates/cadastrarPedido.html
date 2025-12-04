@@ -14,6 +14,10 @@
     <div class="form-header">
         <h1>Cadastro de Pedido</h1>
     </div>
+    
+    <div th:if="${mesagemErro}" class="alert alert-danger">
+        <p th:text="${mesagemErro}"></p>
+    </div>
 
     <br>
 

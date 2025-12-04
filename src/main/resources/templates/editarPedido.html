@@ -14,10 +14,10 @@
         <h1>Editar Pedido</h1>
     </div>
     <br>
-    <form th:action="@{/pedido/update}" th:object="${pedido}" method="post">
+    <form th:action="@{/pedido/edit}" th:object="${pedido}" method="post">
         <br>
         <div th:insert="fragments/formPedido :: formPedido"></div>
-        <input type="hidden" th:field="*{id}" />
+        
         <div class="button-container">
             <button type="submit">Salvar</button>
             <button type="button" onclick="window.location.href='/pedido/list'">Cancelar</button>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fazer Login</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <script src="/js/script.js"></script>
+</head>
+<body>
+
+
+    <h1>Login</h1>
+
+    <form th:action="@{/login}" method="post">
+
+		<div th:if="${param.error}" class="alert alert-danger" role="alert">
+            Usuário ou senha inválidos.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success" role="alert">
+            Você foi desconectado com sucesso.
+        </div>
+        
+		<label for="idLogin">Login:</label>
+		<input id="idUsername" type="text" style="width: 200px"
+			name="username" placeholder="Login" required />
+		<br/><br/>
+		
+		<label for="idSenha">Senha:</label>
+		<input id="idSenha" style="width: 200px"
+			type="password" name="password" placeholder="Senha" required />
+			<br/><br/>
+
+		<button type="submit">Entrar</button>
+    </form>
+
+</body>
+</html>

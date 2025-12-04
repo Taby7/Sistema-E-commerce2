@@ -2,13 +2,17 @@ package com.ecommerce.br.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -41,6 +45,31 @@ public class Cliente implements Serializable{
 	@NotBlank(message= "endereço do cliente é obrigatório")
 	@Column(nullable = false)
 	private String endereco;
+	
+	public ContaPagamento getContaPagamento() {
+		return contaPagamento;
+	}
+
+		public void setContaPagamento(ContaPagamento contaPagamento) {
+	        this.contaPagamento = contaPagamento;
+	        if (contaPagamento != null) {
+	            contaPagamento.setCliente(this); 
+	        }
+	}
+
+	@OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL, optional = true) 
+    private ContaPagamento contaPagamento;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pedido> pedidos;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 
 	public Long getId() {
 		return Id;

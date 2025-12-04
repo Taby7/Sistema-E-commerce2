@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragmento Formulário Usuário</title>
+</head>
+<body>
+
+    <div th:fragment="formUsuario" class="form">
+        
+        <label for="idNome">Nome Completo:</label>
+        <input type="text" id="idNome" th:field="*{nome}" placeholder="Informe o nome completo do usuário" required/>
+        <br>
+
+        <label for="idUsername">Username:</label>
+        <input type="text" id="idUsername" th:field="*{username}" placeholder="Defina um nome de usuário único" required/>
+        <br>
+
+        <label for="idEmail">Email:</label>
+        <input type="email" id="idEmail" th:field="*{email}" placeholder="Informe o email" required/>
+        <br>
+        
+         <label for="idDataNascimento">Data de nascimento:</label>
+        <input type="dataNascimento" id="idDataNascimento" th:field="*{dataNascimento}" placeholder="Informe a data de nascimento" required/>
+        <br>
+        
+        <label for="idLogin">Login:</label> 
+    <input type="text" id="idLogin" th:field="*{login}" placeholder="Login de Acesso" required/>
+    <br>
+
+        
+        </div>
+    
+</body>
+</html>

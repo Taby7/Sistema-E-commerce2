@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-   <title>Fragments</title>
-</head>
 <body>
    <div th:fragment="message">
-       <!-- Mensagem de Sucesso -->
-		<div th:if="${mensagemSucesso}">
+       
+       <div th:if="${mensagemSucesso}" class="alert alert-success">
 		    <p th:text="${mensagemSucesso}"></p>
 		</div>
 
-
-		<!-- Mensagem de Erro -->
-		<div th:if="${mensagemErro}">
+		<div th:if="${mensagemErro}" class="alert alert-danger">
 		    <p th:text="${mensagemErro}"></p>
 		</div>
    </div>
 </body>
-</html> 
+</html>

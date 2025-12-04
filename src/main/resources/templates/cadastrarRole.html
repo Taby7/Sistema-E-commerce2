@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Cadastrar Role</title>
+
+	<link rel="stylesheet" th:href="@{/css/menu.css}">
+		<script src="/js/menu.js"></script>
+
+	</head>
+	<body>
+		<div th:insert="fragments/barraNavegacao :: navbar"></div>
+		
+		<br>
+		
+		<div class="form-header">
+    <h2>Cadastrar Role</h2>
+
+	
+
+    <form th:action="@{/role/save}" th:object="${role}" method="post">
+
+    
+
+		<label>Nome*:</label> 
+
+		<input type="text" th:field="*{nome}" /></label>
+
+		<br/><br/>
+
+		
+
+        <button type="submit">Salvar</button>
+
+		<a th:href="@{/role/list}"><button type="button">Cancelar</button></a>
+
+    </form>
+
+</body>
+
+</html>
+
